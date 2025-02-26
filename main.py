@@ -1,20 +1,22 @@
 import pandas as pd
-from src.clustering import apply_clustering
+from src.clustering import perform_clustering
 from src.recommendations import generate_recommendations
 
 def main():
     # Load dataset
-    df = pd.read_csv("data/health_data.csv")
+    data_path = "data/health_data.csv"
+    df = pd.read_csv(data_path)
     
-    # Apply clustering
-    df_clustered = apply_clustering(df)
+    # Perform clustering
+    clustered_df = perform_clustering(df)
     
     # Generate recommendations
-    df_clustered['recommendation'] = df_clustered['gmm_cluster'].apply(generate_recommendations)
+    recommendations_df = generate_recommendations(clustered_df)
     
     # Save results
-    df_clustered.to_csv("results/segmented_health_data.csv", index=False)
-    print("Segmentation and recommendations saved successfully.")
+    results_path = "results/segmented_health_data.csv"
+    recommendations_df.to_csv(results_path, index=False)
+    print(f"Segmented data saved to {results_path}")
 
 if __name__ == "__main__":
     main()
