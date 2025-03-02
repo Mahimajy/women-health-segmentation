@@ -46,12 +46,6 @@ python main.py
 ```
 - This script loads `health_data.csv`, performs clustering, and generates `segmented_health_data.csv`.
 
-### Run Jupyter Notebook for Analysis
-```bash
-jupyter notebook notebooks/health_segmentation.ipynb
-```
-- Visualizes clustering results and data insights.
-
 ## Expected Output
 - `results/segmented_health_data.csv`: Dataset with cluster labels.
 - Visualizations in `notebooks/health_segmentation.ipynb`.
